@@ -32,9 +32,16 @@
             
             <h:column>
                 <f:facet name="header">
-                    <h:outputText value="Ville"/>
+                    <h:outputText value="Réduction"/>
                 </f:facet>
-                <h:outputText value="#{item.discount}"/>
+                <h:outputText value="#{item.discount.code} : #{item.discount.rate} %" />
+            </h:column>
+            
+            <h:column>
+                <f:facet name="header">
+                    <h:outputText value="Zone géographique"/>
+                </f:facet>
+                <h:outputText value="#{item.zip.zipCode} : Longueur'#{item.zip.areaLength}m'/Largeur'#{item.zip.areaWidth}m'/Rayon'#{item.zip.radius}m'" />
             </h:column>
         </h:dataTable>
     </h:body>
