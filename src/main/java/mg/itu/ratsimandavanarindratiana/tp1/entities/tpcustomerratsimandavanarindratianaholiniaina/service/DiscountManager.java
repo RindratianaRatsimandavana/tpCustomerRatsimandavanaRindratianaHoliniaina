@@ -9,40 +9,32 @@ import jakarta.persistence.EntityManager;
 import jakarta.persistence.PersistenceContext;
 import jakarta.persistence.Query;
 import jakarta.transaction.Transactional;
-import mg.itu.ratsimandavanarindratiana.tp1.entities.tpcustomerratsimandavanarindratianaholiniaina.entity.Customer;
 import java.util.List;
+import mg.itu.ratsimandavanarindratiana.tp1.entities.tpcustomerratsimandavanarindratianaholiniaina.entity.Discount;
 
 /**
- * Façade pour gérer les Customers.
+ * Façade pour gérer les Discount
  *
  * @author rindr
  */
 @RequestScoped
-public class CustomerManager {
+public class DiscountManager {
 
     @PersistenceContext(unitName = "customerPU")
     private EntityManager em;
 
-    /**
-     * Insère un nouveau customer.
-     */
-    @Transactional
-    public void persist(Customer customer) {
-        em.persist(customer);
-    }
-
-    public List<Customer> getAllCustomers() {
-        Query query = em.createNamedQuery("Customer.findAll");
+    public List<Discount> getAllDiscounts() {
+        Query query = em.createNamedQuery("Discount.findAll");
         return query.getResultList();
 
     }
 
     @Transactional
-    public Customer update(Customer customer) {
-        return em.merge(customer);
+    public Discount update(Discount discount) {
+        return em.merge(discount);
     }
 
-    public Customer findById(int idCustomer) {
-        return em.find(Customer.class, idCustomer);
+    public Discount findById(String code) {
+        return em.find(Discount.class, code);
     }
 }
