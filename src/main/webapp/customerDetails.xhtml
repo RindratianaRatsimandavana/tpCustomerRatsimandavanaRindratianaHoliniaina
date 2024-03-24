@@ -17,8 +17,9 @@
         <f:view>
 
 
-            <h:form>
+            <h:form rendered='#{customerDetailsBean.customer != null}'>
                 <h1><h:outputText value="Create/Edit"/></h1>
+                
                 <h:panelGrid columns="2">
                     <h:outputLabel value="CustomerId:" for="customerId" />
                     <h:inputText id="customerId" value="#{customerDetailsBean.customer.customerId}" title="CustomerId" readonly="true" required="true" requiredMessage="The CustomerId field is required."/>
@@ -52,10 +53,14 @@
                     <h:commandButton id="update" value="Enregistrer" action="#{customerDetailsBean.update}"/>
                 </h:panelGrid>
                 <h:messages/>
+                
             </h:form>
+            <!-- Message quand il n'y a pas de customer -->
+            <h:outputText value="Aucun client avec l'id #{customerDetailsBean.idCustomer} !" 
+                          rendered='#{customerDetailsBean.customer == null}'/>
         </f:view>
-        
-        
+
+
 
     </h:body>
 </html>
